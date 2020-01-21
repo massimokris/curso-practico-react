@@ -1,0 +1,31 @@
+.main {
+  height: 130px;
+  margin-top: 60px;
+  display: grid;
+  justify-items: center;
+}
+
+.main__title {
+  color: white;
+  font-size: 25px;
+}
+
+.input {
+  border: 2px solid white;
+  border-radius: 55px;
+  color: white;
+  font-family: "Muli", sans-serif;
+  font-size: 16px;
+  height: 45px;
+  padding: 0px 20px;
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.input:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: white;
+}
