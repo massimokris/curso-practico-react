@@ -13,7 +13,7 @@ const useInitialState = (API) => {
       .then(data => setVideos(data));
   }, []);
 
-  return videos;
+  return videos ? videos : "";
 };
 
 export default useInitialState;
