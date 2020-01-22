@@ -1,0 +1,33 @@
+@media only screen and (max-width: 600px) {
+    .login__container {
+      background-color: transparent;
+      border: none;
+      padding: 0px;
+      width: 100%;
+    }
+  
+    .footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    // .carousel {
+    //   padding: 0px;
+    // }
+  
+    // .carousel__container {
+    //   margin: 70px 20px;
+    // }
+  
+    // .main {
+    //   margin-top: 40px;
+    // }
+
+    .carousel-item:hover ~ .carousel-item {
+        transform: none;
+      }
+      
+      .carousel__container:hover .carousel-item:hover {
+        transform: none;
+      }
+  }
