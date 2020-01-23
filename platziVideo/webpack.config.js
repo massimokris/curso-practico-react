@@ -58,6 +58,9 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    historyApiFallback: true
+  },
   plugins: [
     new HtmlWebPackPlugin({
       //le indicamos de donde va a tomar el template

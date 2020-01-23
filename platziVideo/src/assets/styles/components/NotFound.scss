@@ -1,0 +1,35 @@
+.main--not-found {
+    height: 330px;
+    display: grid;
+    justify-items: center;
+}
+
+@keyframes latidos {
+    from { transform: none; }
+    50% { transform: scale(1.4); }
+    to { transform: none; }
+}
+
+.main__title--not-found {
+    color: white;
+    font-size: 150px;
+    margin-bottom: 0px;
+    animation: latidos 2.3s infinite;
+}
+
+.main__subtitle--not-found {
+    color: white;
+    font-size: 25px;
+    margin: 0px;
+}
+
+.main--not-found > a {
+    color: white;
+    font-size: 16px;
+    margin: 0px;
+    text-decoration: none;
+}
+
+.main--not-found > a:hover {
+    text-decoration: underline;
+}
