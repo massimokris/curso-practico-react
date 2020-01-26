@@ -5,6 +5,10 @@
   justify-items: center;
 }
 
+.main .isHome {
+  height: 130px;
+}
+
 .main__title {
   color: white;
   font-size: 25px;
@@ -17,12 +21,12 @@
   font-family: "Muli", sans-serif;
   font-size: 16px;
   height: 45px;
-  padding: 0px 20px;
   width: 70%;
+  padding: 0px 20px;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.input:focus {
+.input__search:focus {
   outline: none;
 }
 

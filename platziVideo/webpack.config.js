@@ -13,7 +13,8 @@ module.exports = {
     //y le indicamos un directorio donde guardaremos los archivos
     path: path.resolve(__dirname, "dist"),
     //le indicamos el nombre del archivo principal
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: "/"
   },
   //aca vamos a indicar las extensiones que utilizaremos en el proyecto
   resolve: {

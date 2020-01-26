@@ -15,8 +15,8 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     color: white;
     padding: 60px 68px 40px;
-    min-height: 700px;
-    /*width: auto;*/
+    /*min-height: 700px;
+    width: auto;*/
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -92,21 +92,6 @@
     width: auto;
 }
 
-// ::placeholder {
-//     color: white;
-// }
-
-.button {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
+::placeholder {
     color: white;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: 'Muli', sans-serif;
-    height: 50px;
-    letter-spacing: 1px;
-    margin: 10px 0px;
-    outline: none;
 }
