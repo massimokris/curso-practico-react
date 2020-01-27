@@ -6,7 +6,7 @@ import Login from "../containers/Login";
 import Register from "../containers/Register";
 import NotFound from "../containers/NotFound";
 import Layout from "../components/Layout";
-import Player from "../containers/player";
+import Player from "../containers/Player";
 
 const App = () => (
   <BrowserRouter>

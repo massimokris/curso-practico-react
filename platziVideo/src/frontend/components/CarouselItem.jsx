@@ -10,7 +10,7 @@ import playIcon from "../assets/static/icons8-play-64.png";
 import plusIcon from "../assets/static/plus-icon.png";
 import removeIcon from "../assets/static/remove-icon.png";
 
-const CaruoselItem = props => {
+const CaruoselItem = (props) => {
   const { id, cover, title, year, contentRating, duration, isList } = props;
   const handleSetFavorite = () => {
     props.setFavorite({
@@ -19,10 +19,10 @@ const CaruoselItem = props => {
       title,
       year,
       contentRating,
-      duration
+      duration,
     });
   };
-  const handleDeleteFavorite = itemId => {
+  const handleDeleteFavorite = (itemId) => {
     props.deleteFavorite(itemId);
   };
   return (
@@ -67,12 +67,12 @@ CaruoselItem.propTypes = {
   title: PropTypes.string,
   year: PropTypes.number,
   contentRating: PropTypes.string,
-  duration: PropTypes.number
+  duration: PropTypes.number,
 };
 
 const mapDispatchToProps = {
   setFavorite,
-  deleteFavorite
+  deleteFavorite,
 };
 
 export default connect(null, mapDispatchToProps)(CaruoselItem);

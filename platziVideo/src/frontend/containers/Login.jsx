@@ -10,27 +10,27 @@ import "../assets/styles/components/Login.scss";
 import googleIcon from "../assets/static/google-icon.png";
 import twitterIcon from "../assets/static/twitter-icon.png";
 
-const Login = props => {
+const Login = (props) => {
   const [form, setValues] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
-  const handleInput = event => {
+  const handleInput = (event) => {
     setValues({
       ...form,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     //preventDefault para evitar la funcion por default del form
     event.preventDefault();
     props.loginRequest(form);
 
     //el valor history nos permite movernos con las diferentes rutas
     //del router
-    props.history.push('/');
+    props.history.push("/");
   };
 
   return (
@@ -58,7 +58,7 @@ const Login = props => {
             placeholder="Contraseña"
             onChange={handleInput}
           />
-          <button className="button">Iniciar sesión</button>
+          <button type="button" className="button">Iniciar sesión</button>
           <div className="login__container--remember-me">
             <label>
               <input type="checkbox" name="" id="cbox1" value=" checkbos" />
@@ -78,7 +78,7 @@ const Login = props => {
           </div>
         </section>
         <p className="login__container--register">
-          ¿No tienes ninguna cuenta? {'   '}
+          ¿No tienes ninguna cuenta? {" "}
           <Link to="/register">Regístrate</Link>
         </p>
       </section>
@@ -87,7 +87,7 @@ const Login = props => {
 };
 
 const mapDispatchToProps = {
-  loginRequest
+  loginRequest,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

@@ -6,21 +6,21 @@ import { registerRequest } from "../actions/index";
 //styles
 import "../assets/styles/components/Register.scss";
 
-const Register = props => {
+const Register = (props) => {
   const [form, setValues] = useState({
     name: "",
     email: "",
-    password: ""
+    password: "",
   });
 
-  const handleInput = event => {
+  const handleInput = (event) => {
     setValues({
       ...form,
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     //preventDefault para evitar la funcion por default del form
     event.preventDefault();
     props.registerRequest(form);
@@ -68,7 +68,7 @@ const Register = props => {
 };
 
 const mapDispatchToProps = {
-  registerRequest
+  registerRequest,
 }
 
 export default connect(null, mapDispatchToProps)(Register);

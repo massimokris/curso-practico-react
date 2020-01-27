@@ -1,24 +1,51 @@
 const path = require("path");
 
-//plugin instalado para manejo de html
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+// //plugin instalado para manejo de html
+// const HtmlWebPackPlugin = require("html-webpack-plugin");
+
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const autoprefixer = require("autoprefixer");
+const webpack = require("webpack");
 
 module.exports = {
   //le indicamos el entry point del proyecto
-  entry: "./src/index.js",
+  entry: "./src/frontend/index.js",
+  mode: 'development',
   //le indicamos el output que vamos a crear
   output: {
     //tomamos el path del directorio con __dirname
     //y le indicamos un directorio donde guardaremos los archivos
-    path: path.resolve(__dirname, "dist"),
+    path: "/",
     //le indicamos el nombre del archivo principal
-    filename: "bundle.js",
+    filename: "assets/app.js",
     publicPath: "/"
   },
   //aca vamos a indicar las extensiones que utilizaremos en el proyecto
   resolve: {
     extensions: [".js", ".jsx"]
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "async",
+      name: true,
+      cacheGroups: {
+        vendors: {
+          name: "vendors",
+          chunks: "all",
+          reuseExistingChunk: true,
+          priority: 1,
+          filename: "assets/vendor.js",
+          enforce: true,
+          test(module, chunks) {
+            const name = module.nameForCondition && module.nameForCondition();
+            return chunks.some(
+              (chunk) =>
+                chunk.name !== "vendor" && /[\\/]node_modules[\\/]/.test(name)
+            );
+          }
+        }
+      }
+    }
   },
   module: {
     //indicamos todas las reglas para poder trabajar con nuestros archivos
@@ -26,14 +53,16 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
+        enforce: "pre",
         use: {
-          loader: "babel-loader"
+          loader: "eslint-loader"
         }
       },
       {
-        test: /\.html$/,
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
         use: {
-          loader: "html-loader"
+          loader: "babel-loader"
         }
       },
       {
@@ -43,7 +72,17 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader
           },
           "css-loader",
-          "sass-loader"
+          "postcss-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              prependData: `
+                @import "./src/frontend/assets/styles/Vars.scss";
+                @import "./src//frontend/assets/styles/Media.scss";
+                @import "./src//frontend/assets/styles/Base.scss";
+              `
+            }
+          }
         ]
       },
       {
@@ -63,14 +102,14 @@ module.exports = {
     historyApiFallback: true
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      //le indicamos de donde va a tomar el template
-      //y el nombre del archivo que creara
-      template: "./public/index.html",
-      filename: "./index.html"
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [autoprefixer()]
+      }
     }),
     new MiniCssExtractPlugin({
-      filename: "assets/[name].css"
+      filename: "assets/app.css"
     })
   ]
 };

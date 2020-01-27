@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import gravatar from "../utils/gravatar";
 import PropTypes from "prop-types";
+import gravatar from "../utils/gravatar";
 import { logoutRequest } from "../actions/index";
 import "../assets/styles/components/Header.scss";
 
@@ -10,7 +10,7 @@ import "../assets/styles/components/Header.scss";
 import logo from "../assets/static/logo-platzi-video-BW2.png";
 import userIcon from "../assets/static/user-icon.png";
 
-const Header = props => {
+const Header = (props) => {
   const { user } = props;
   const hasUser = Object.keys(user).length > 0;
 
@@ -57,17 +57,17 @@ const Header = props => {
 };
 
 Header.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
   };
 };
 
 const mapDispatchToProps = {
-  logoutRequest
+  logoutRequest,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

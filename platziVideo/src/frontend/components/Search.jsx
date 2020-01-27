@@ -3,13 +3,13 @@ import classNames from "classnames";
 import "../assets/styles/components/Search.scss";
 
 const Search = ({ isHome }) => {
-  const inputStyle = classNames('input__search', {
-    isHome
+  const inputStyle = classNames("input__search", {
+    isHome,
   });
   return (
     <section className="main">
       <h2 className="main__title">¿Qué quieres ver hoy?</h2>
-      <input className="input__search" type="text" placeholder="Buscar..." />
+      <input className={inputStyle} type="text" placeholder="Buscar..." />
     </section>
   );
 };

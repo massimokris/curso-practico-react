@@ -6,7 +6,7 @@ import NotFound from "./NotFound";
 //Styles
 import "../assets/styles/components/Player.scss";
 
-const Player = props => {
+const Player = (props) => {
   const { id } = props.match.params;
   const hasPlaying = Object.keys(props.playing).length > 0;
 
@@ -30,14 +30,14 @@ const Player = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    playing: state.playing
+    playing: state.playing,
   };
 };
 
 const mapDispatchToProps = {
-  getVideoSource
+  getVideoSource,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

@@ -9,11 +9,11 @@ const useInitialState = (API) => {
   //y traer o enviar informacion para utilizarla en useState
   useEffect(() => {
     fetch(API)
-      .then(response => response.json())
-      .then(data => setVideos(data));
+      .then((response) => response.json())
+      .then((data) => setVideos(data));
   }, []);
 
-  return videos ? videos : "";
+  return videos || "";
 };
 
 export default useInitialState;
