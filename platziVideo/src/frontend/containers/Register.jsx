@@ -27,13 +27,13 @@ const Register = (props) => {
 
     //el valor history nos permite movernos con las diferentes rutas
     //del router
-    props.history.push('/');
+    props.history.push("/");
   };
 
   return (
     <section className="register">
       <section className="register__container">
-        <h2 tabIndex="0">Regístrate</h2>
+        <h2>Regístrate</h2>
         <form className="register__container--form" onSubmit={handleSubmit}>
           <input
             name="name"
@@ -69,6 +69,6 @@ const Register = (props) => {
 
 const mapDispatchToProps = {
   registerRequest,
-}
+};
 
 export default connect(null, mapDispatchToProps)(Register);

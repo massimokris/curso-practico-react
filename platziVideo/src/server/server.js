@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import webpack from 'webpack';
+import main from './routes/main';
+import helmet from 'helmet';
 
 dotenv.config();
 
@@ -8,6 +10,7 @@ const ENV = process.env.NODE_ENV;
 const PORT = process.env.PORT || 3000;
 
 const app = new express();
+app.use(express.static(`${__dirname}/public`));
 
 if (ENV === 'development') {
   console.log('Loading dev config');
@@ -24,28 +27,15 @@ if (ENV === 'development') {
     stats: { colors: true }
   };
   app.use(webpackDevMiddleware(compiler, serverConfig));
-  app.use(webpackHotMiddleware(compiler));
+  //app.use(webpackHotMiddleware(compiler));
+} else {
+  console.log(`Loading ${ENV} config`);
+  app.use(helmet());
+  app.use(helmet.permittedCrossDomainPolicies());
+  app.disable('x-powered-by');
 }
 
-app.get("*", (req, res) => {
-  res.send(`
-  <!DOCTYPE html>
-    <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <meta http-equiv="X-UA-Compatible" content="ie=edge">
-          <link rel="stylesheet" href="assets/app.css" type="type/css"></link>
-          <title>Platzi Video</title>
-      </head>
-      <body>
-          <section id="app"></section>
-          <script src="assets/app.js" type"text/javascript"></script>
-          <script src="assets/vendor.js" type"text/javascript"></script>
-      </body>
-    </html>
-  `);
-});
+app.get("*", main);
 
 app.listen(PORT, err => {
   if (err) console.log(err);

@@ -36,7 +36,7 @@ const Login = (props) => {
   return (
     <section className="login">
       <section className="login__container">
-        <h2 tabIndex="0">Inicia sesión</h2>
+        <h2>Inicia sesión</h2>
         <form
           action=""
           className="login__container--form"
@@ -58,10 +58,10 @@ const Login = (props) => {
             placeholder="Contraseña"
             onChange={handleInput}
           />
-          <button type="button" className="button">Iniciar sesión</button>
+          <button className="button">Iniciar sesión</button>
           <div className="login__container--remember-me">
-            <label>
-              <input type="checkbox" name="" id="cbox1" value=" checkbos" />
+            <label htmlFor="remember">
+              <input type="checkbox" name="remember" id="cbox1" value="checkbox" />
               Recuérdame
             </label>
             <a href="/">Olvidé mi contraseña</a>
@@ -78,8 +78,8 @@ const Login = (props) => {
           </div>
         </section>
         <p className="login__container--register">
-          ¿No tienes ninguna cuenta? {" "}
-          <Link to="/register">Regístrate</Link>
+          ¿No tienes ninguna cuenta?
+          <Link to="/register"> Regístrate</Link>
         </p>
       </section>
     </section>

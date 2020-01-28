@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production",
+    "build": "webpack-cli --config webpack.config.js --colors",
     "start": "webpack-dev-server --open --mode development",
+    "start:prod": "node src/server/index.js",
     "start:dev": "nodemon src/server/index.js --exact babel-node",
     "start:fix": "eslint --fix src/frontend/*"
   },
@@ -15,20 +15,29 @@
   "license": "ISC",
   "dependencies": {
     "@babel/register": "^7.8.3",
+    "asset-require-hook": "^1.2.0",
     "autoprefixer": "^9.7.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "classnames": "^2.2.6",
+    "compression-webpack-plugin": "^3.1.0",
     "dotenv": "^8.2.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "history": "^4.10.1",
+    "ignore-styles": "^5.0.1",
     "md5": "^2.2.1",
     "postcss-loader": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-hot-loader": "^4.12.19",
-    "react-router-dom": "^5.1.2"
+    "react-router": "^5.1.2",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.1.2",
+    "terser-webpack-plugin": "^2.3.2",
+    "webpack-manifest-plugin": "^2.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
