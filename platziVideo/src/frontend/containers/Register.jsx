@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { registerRequest } from "../actions/index";
+import { registerUser } from "../actions/index";
 
 //styles
 import "../assets/styles/components/Register.scss";
@@ -23,11 +23,7 @@ const Register = (props) => {
   const handleSubmit = (event) => {
     //preventDefault para evitar la funcion por default del form
     event.preventDefault();
-    props.registerRequest(form);
-
-    //el valor history nos permite movernos con las diferentes rutas
-    //del router
-    props.history.push("/");
+    props.registerUser(form, "/login");
   };
 
   return (
@@ -59,7 +55,7 @@ const Register = (props) => {
             placeholder="Contraseña"
             onChange={handleInput}
           />
-          <button className="button">Registrarme</button>
+          <button className="button" type="submit">Registrarme</button>
         </form>
         <Link to="/login">Iniciar sesión</Link>
       </section>
@@ -68,7 +64,7 @@ const Register = (props) => {
 };
 
 const mapDispatchToProps = {
-  registerRequest,
+  registerUser,
 };
 
 export default connect(null, mapDispatchToProps)(Register);

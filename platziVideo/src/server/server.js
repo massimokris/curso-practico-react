@@ -68,12 +68,12 @@ app.post("/auth/sign-in", async function(req, res, next) {
       req.login(data, { session: false }, async error => {
         if (error) next(error);
 
-        const { token, ...user } = data;
+        const { ...user } = data;
 
-        res.cookie("token", token, {
-          httpOnly: !config.dev,
-          secure: !config.dev
-        });
+        // res.cookie("token", token, {
+        //   httpOnly: !config.dev,
+        //   secure: !config.dev
+        // });
 
         res.status(200).json(user);
       });
@@ -85,13 +85,15 @@ app.post("/auth/sign-in", async function(req, res, next) {
 
 app.post("/auth/sign-up", async function(req, res, next) {
   const { body: user } = req;
-
+  console.log(`url:      ${JSON.stringify(user)}`);
   try {
     await axios({
       url: `${config.apiUrl}/api/auth/sign-up`,
       method: "post",
       data: user
     });
+
+    console.log('here');
 
     res.status(201).json({ message: "User created" });
   } catch (error) {

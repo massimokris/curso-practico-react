@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { loginRequest } from "../actions/index";
+import { loginUser } from "../actions/index";
 
 //styles
 import "../assets/styles/components/Login.scss";
@@ -26,11 +26,8 @@ const Login = (props) => {
   const handleSubmit = (event) => {
     //preventDefault para evitar la funcion por default del form
     event.preventDefault();
-    props.loginRequest(form);
-
-    //el valor history nos permite movernos con las diferentes rutas
-    //del router
-    props.history.push("/");
+    console.log(form);
+    props.loginUser(form, "/");
   };
 
   return (
@@ -58,7 +55,7 @@ const Login = (props) => {
             placeholder="Contraseña"
             onChange={handleInput}
           />
-          <button className="button">Iniciar sesión</button>
+          <button className="button" type="submit">Iniciar sesión</button>
           <div className="login__container--remember-me">
             <label htmlFor="remember">
               <input type="checkbox" name="remember" id="cbox1" value="checkbox" />
@@ -87,7 +84,7 @@ const Login = (props) => {
 };
 
 const mapDispatchToProps = {
-  loginRequest,
+  loginUser,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

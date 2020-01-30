@@ -1,3 +1,4 @@
+require('babel-polyfill');
 //requiero passport para la seguridad
 const passport = require('passport');
 
